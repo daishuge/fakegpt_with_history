@@ -1,8 +1,8 @@
 import openai
 import time
 
-def fake_api(query,max,a):
-    openai.api_key = "YOUR_FAKEOPEN_KEY"  # 使用假的 API 密钥
+def fake_api(query,max,a,tem):
+    openai.api_key = "Your_key"  # 使用假的 API 密钥
     openai.api_base = "https://ai.fakeopen.com/v1/"
     start_time = time.time()  # 记录开始时间
 
@@ -11,7 +11,7 @@ def fake_api(query,max,a):
         messages=[
             {'role': 'user', 'content': query}
         ],
-        temperature=0.9,
+        temperature=tem,
         max_tokens=max,
         stream=True  # 开启流式输出
     )

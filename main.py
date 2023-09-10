@@ -1,5 +1,6 @@
 from fake_api import fake_api
 from token_count import token_count
+import time
 
 history = []
 
@@ -7,9 +8,13 @@ def main():
 
     while True:
         query = input("\n\nYou: ")
+        if query == "clear":
+            history.clear()
+            continue
+
         history.append("user:" + query)
         history_string="".join(history)
-        full_result = fake_api(history_string, 2500,True)
+        full_result = fake_api(history_string, 2500,True,1)
 
         history.append("chatgpt: " + full_result)
 
@@ -17,15 +22,19 @@ def main():
 
         tokens=token_count(history_string)
 
-        #如果token数超过2500，就清空历史记录
-    # if tokens>2500:
-    #         gaikuo=fake_api("请概括成500个英文单词以内,不要有多余内容: "+history_string,600,False)
+        #如果token数超过，就清空历史记录
+        if tokens>10000:
+                print("概括中...")
 
-    #         print("概括中...")
+                history_string="".join(history)
 
-    #         history.clear()
+                gaikuo=fake_api("请把这段文字概括成1000个英文单词以内,不要有多余内容: "+history_string,600,False,0.3)
 
-    #         history.append("history:"+gaikuo)
+                print("\n\n概括结果:"+gaikuo+"\n\n")
+                
+                history.clear()
+
+                history.append("history:"+gaikuo)
 
 if __name__ == '__main__':
     main()
