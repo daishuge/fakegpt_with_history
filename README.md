@@ -13,3 +13,5 @@
 5.在main.py中调用token_count.py中的函数来计算history列表中的token
 
 6.如果计算出来的token>2500,则调用ai概括,并且覆写进history列表中
+
+请各位大佬指正,本人邮箱: play13661948263@gmail.com
