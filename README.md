@@ -1,5 +1,7 @@
-# -fakegpt-with-history
-一个使用ai.fakeopen.com的api的包含聊天概括功能的ai聊天机器人
+# fakegpt-with-history
+一个使用ai.fakeopen.com的api的包含聊天概括功能的chatgpt聊天机器人
+
+通过大佬zhile-io的项目，实现0消费的chatgpt api调用
 
 项目结构:
 1.在fake_api.py中定义一个调用ai的函数
