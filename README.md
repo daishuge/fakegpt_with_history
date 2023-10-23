@@ -17,3 +17,5 @@
 6.如果计算出来的token>2500,则调用ai概括,并且覆写进history列表中
 
 请各位大佬指正,本人邮箱: play13661948263@gmail.com
+
+更新:现在zhile-io大佬的api支持了超大token,几乎完全不用担心token,各位在应用的时候可以去掉token计数,但是在调用官方api时建议加上
