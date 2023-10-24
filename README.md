@@ -21,6 +21,10 @@
 更新:现在zhile-io大佬的api支持了超大token,几乎完全不用担心token,各位在应用的时候可以去掉token计数,但是在调用官方api时建议加上
 现在默认不记录token,你可以把main.py中的相关注释去除
 
+##运行截图
+![image](https://github.com/daishuge/-fakegpt-with-history/assets/122254868/b3204a76-3d1a-4674-a0e7-a3a8aaff7b98)
+
+
 ## Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=daishuge/-fakegpt-with-history&type=Date)](https://star-history.com/#daishuge/-fakegpt-with-history&Date)
