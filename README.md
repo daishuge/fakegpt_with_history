@@ -7,7 +7,6 @@
 ```
 pip install openai
 pip install jieba
-
 ```
 
 项目结构:
