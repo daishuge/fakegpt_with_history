@@ -3,13 +3,13 @@
 
 通过大佬zhile-io的项目，实现0消费的chatgpt api调用
 
-##依赖安装
+## 依赖安装
 ```
 pip install openai
 pip install jieba
 ```
 
-项目结构:
+## 项目结构:
 1.在fake_api.py中定义一个调用ai的函数
 
 2.在token_count.py中定义一个函数来计算token
