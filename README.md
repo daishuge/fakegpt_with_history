@@ -19,3 +19,5 @@
 请各位大佬指正,本人邮箱: play13661948263@gmail.com
 
 更新:现在zhile-io大佬的api支持了超大token,几乎完全不用担心token,各位在应用的时候可以去掉token计数,但是在调用官方api时建议加上
+
+<iframe style="width:100%;height:auto;min-width:600px;min-height:400px;" src="https://star-history.com/embed?secret=Z2hwX2szWTFUbjdBREc0NzVocGVPVGNtQjVIUEdCeEtsdDJhTW8zYQ==#daishuge/-fakegpt-with-history&Date" frameBorder="0"></iframe>
