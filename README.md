@@ -3,6 +3,13 @@
 
 通过大佬zhile-io的项目，实现0消费的chatgpt api调用
 
+##依赖安装
+```
+pip install openai
+pip install jieba
+
+```
+
 项目结构:
 1.在fake_api.py中定义一个调用ai的函数
 
@@ -14,7 +21,9 @@
 
 5.在main.py中调用token_count.py中的函数来计算history列表中的token
 
-6.如果计算出来的token>2500,则调用ai概括,并且覆写进history列表中
+6.如果计算出来的token>2500,则调用ai概括,并且覆写进history列表中(可选)
+
+7.再次让用户输入,把用户新输入和history列表中所有内容交给chatgpt
 
 请各位大佬指正,本人邮箱: play13661948263@gmail.com
 
