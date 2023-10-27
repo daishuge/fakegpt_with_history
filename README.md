@@ -1,4 +1,4 @@
-# fakegpt-with-history
+# fakegpt_with_history
 一个使用ai.fakeopen.com的api的包含聊天概括功能的chatgpt聊天机器人
 
 通过大佬zhile-io的项目，实现0消费的chatgpt api调用
