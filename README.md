@@ -4,7 +4,7 @@
 通过大佬zhile-io的项目，实现0消费的chatgpt api调用
 
 ## 依赖安装
-```
+```shell
 pip install openai
 pip install jieba
 ```
