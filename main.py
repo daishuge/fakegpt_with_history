@@ -19,21 +19,22 @@ def main():
 
         history_string="".join(history)
 
-        # tokens=token_count(history_string)
+        tokens=token_count(history_string)
+'''
+        如果你使用openai官方api,请去掉注释
+        if tokens>10000:
+                print("概括中...")
 
-        #如果你使用openai官方api,请去掉注释
-        # if tokens>10000:
-        #         print("概括中...")
+                history_string="".join(history)
 
-        #         history_string="".join(history)
+                gaikuo=fake_api("请把这段文字概括成1000个英文单词以内,不要有多余内容: "+history_string,600,False,0.3)
 
-        #         gaikuo=fake_api("请把这段文字概括成1000个英文单词以内,不要有多余内容: "+history_string,600,False,0.3)
-
-        #         print("\n\n概括结果:"+gaikuo+"\n\n")
+                print("\n\n概括结果:"+gaikuo+"\n\n")
                 
-        #         history.clear()
+                history.clear()
 
-        #         history.append("history:"+gaikuo)
+                history.append("history:"+gaikuo)
+'''
 
 if __name__ == '__main__':
     #调用main函数
