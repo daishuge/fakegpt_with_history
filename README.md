@@ -10,7 +10,9 @@ pip install jieba
 ```
 
 ## 如何获取fk- 的api?
-请参考这个issue: https://github.com/zhile-io/pandora/issues/183
+请参考这个issue: 
+
+https://github.com/zhile-io/pandora/issues/183
 
 ## 项目结构:
 1.在fake_api.py中定义一个调用ai的函数
