@@ -3,6 +3,10 @@ from fake_api import fake_api
 from token_count import token_count
 import config
 
+print('''
+作者: daishuge袋鼠哥
+github.com/daishuge/fakegpt_with_history
+''')
 print("加载分词中...\n")
 token_count("1")    #初始化jieba
 print("\n")
@@ -53,6 +57,7 @@ def main():
         history_string="".join(history)
 
         if config.long_text:
+            print("")
             tokens=token_count(history_string)
 
             if tokens>config.max_token:
@@ -60,9 +65,7 @@ def main():
 
                     history_string="".join(history)
 
-                    gaikuo=fake_api(f"请把这段文字概括成{config.smaller_text}个英文单词以内,不要有多余内容: "+history_string,600,True,0.3,if_pandora)
-
-                    print("\n\n概括结果:"+gaikuo+"\n\n")
+                    gaikuo=fake_api("请把这段文字概括成"+str(config.smaller_text)+"个英文单词以内,不要有多余内容: "+history_string,600,True,0.3,if_pandora)
                     
                     history.clear()
 
