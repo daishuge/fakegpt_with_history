@@ -29,7 +29,6 @@ if if_pandora:
     openai.api_base = "https://ai.fakeopen.com/v1/"
 else:
     openai.api_key = "YOUR_OPNEIA_REAL_KEY"  #real_api
-start_time = time.time()  # 记录开始时间
 ```
 
 main.py中的调用:
