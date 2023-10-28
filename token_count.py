@@ -5,7 +5,9 @@ def token_count(str_list):
     for s in str_list:
         tokens = jieba.lcut(s)  # 使用jieba库进行分词
         total_tokens += len(tokens)
-    print("目前token:"+str(total_tokens))
+    if total_tokens>=5:
+        print("目前token:"+str(total_tokens)+"\n")
+    
     return total_tokens
 
 

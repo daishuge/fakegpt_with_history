@@ -1,13 +1,14 @@
 import openai
 import time
+import config
 
 def fake_api(query,max,stream_true,tem,if_pandora):
     
     if if_pandora:
-        openai.api_key = "YOUR_PANDORA_FAKE_KEY "    #fake_api
-        openai.api_base = "https://ai.fakeopen.com/v1/"
+        openai.api_key = config.pandora_api  #pandora_api
+        openai.api_base = config.base_url
     else:
-        openai.api_key = "YOUR_OPNEIA_REAL_KEY"  #real_api
+        openai.api_key = config.openai_api
     start_time = time.time()  # 记录开始时间
 
     response = openai.ChatCompletion.create(

@@ -62,6 +62,23 @@ except:
 
 现在默认不记录token,你可以把main.py中的相关注释去除
 
+## 配置文件
+在10.28更新中,加入了配置文件
+
+配置文件长这样:
+
+```python
+if_pandora = True                           #是否尝试使用pandora反代
+long_text = True                            #是否启用概括
+max_token = 500                             #到达此token则概括
+smaller_text = 50                           #概括成此单词数
+openai_api = "YOUR_OPENAI_REAL_KEY"         #real_key
+pandora_api = "YOUR_PANDORA_FAKE_KEY"       #fake_key
+base_url = "https://ai.fakeopen.com/v1/"    #pandora反代地址
+```
+
+你可以在配置文件中进行设置
+
 ## 运行截图
 ![image](https://github.com/daishuge/-fakegpt-with-history/assets/122254868/b3204a76-3d1a-4674-a0e7-a3a8aaff7b98)
 
