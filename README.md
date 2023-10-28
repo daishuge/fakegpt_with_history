@@ -14,6 +14,11 @@ pip install jieba
 
 https://github.com/zhile-io/pandora/issues/183
 
+## 加入pandora服务检查
+由于pandora服务最近不是很稳定,所以加入了检查服务是否正常的功能,如果服务不正常,则会自动切换到openai官方api
+
+灵感来自于我同学hhhhhge: https://github.com/hhhhhge
+
 ## 项目结构:
 1.在fake_api.py中定义一个调用ai的函数
 
