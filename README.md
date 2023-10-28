@@ -6,7 +6,7 @@ Pandora项目暂时失败，Pandora项目的接口处于繁忙状态
 
 api反代来自qchatgpt项目中的反代，感谢qchatgpt项目的反代
 
-实现无需连接到 openai ，~~且 api 不会泄露~~ 现在怎么可能
+实现无需连接到 openai 
 
 ## 依赖安装
 
@@ -20,7 +20,7 @@ Pandora 项目使用假的 api ，类似 fk-xxxxxxxxxxxxxx
 
 请参考这个issue:
 
-https://github.com/zhile-io/pandora/issues/183
+https://githubfast.com/zhile-io/pandora/issues/183
 
 ## 项目结构
 
