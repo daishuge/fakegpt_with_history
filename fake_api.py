@@ -4,7 +4,7 @@ import config
 openai.api_base = config.api_base
 openai.api_key = config.api_key
 
-def fake_api(query, max=8192, tem=0.8):
+def fake_api(query, max=2048, tem=0.8):
     response = openai.ChatCompletion.create(
         model='gpt-3.5-turbo',
         messages=[
@@ -23,6 +23,8 @@ def fake_api(query, max=8192, tem=0.8):
             yield False
 
 if __name__ == '__main__':
+    print(config.api_base)
+    print(config.api_key)
     api = fake_api("你好")
     for value in api:
         if value:

@@ -1,8 +1,12 @@
 # **Fakegpt**
 
-由 Pandora 项目的 api 地址的实现
+~~由 Pandora 项目的 api 地址的实现~~
 
-实现无需连接到 openai 的 api ，且 api 不会泄露
+Pandora项目暂时失败，Pandora项目的接口处于繁忙状态
+
+api反代来自qchatgpt项目中的反代，感谢qchatgpt项目的反代
+
+实现无需连接到 openai ，~~且 api 不会泄露~~ 现在怎么可能
 
 ## 依赖安装
 
