@@ -19,6 +19,29 @@ https://github.com/zhile-io/pandora/issues/183
 
 灵感来自于我同学hhhhhge: https://github.com/hhhhhge
 
+此部分代码:
+
+fake_api.py中的fake_api函数:
+
+```python
+if if_pandora:
+    openai.api_key = "YOUR_PANDORA_FAKE_KEY "    #fake_api
+    openai.api_base = "https://ai.fakeopen.com/v1/"
+else:
+    openai.api_key = "YOUR_OPNEIA_REAL_KEY"  #real_api
+start_time = time.time()  # 记录开始时间
+```
+
+main.py中的调用:
+
+```python
+try:
+    fake_api("test", 1000, True, 0.5,if_pandora)
+except:
+    if_pandora=False
+    print("pandora 连接错误, 尝试官方api")
+```
+
 ## 项目结构:
 1.在fake_api.py中定义一个调用ai的函数
 
