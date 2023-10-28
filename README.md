@@ -1,4 +1,4 @@
-# **Fakegpt**
+# **Fakegpt-chatgpt-with-history**
 
 ~~由 Pandora 项目的 api 地址的实现~~
 
@@ -6,7 +6,7 @@ Pandora项目暂时失败，Pandora项目的接口处于繁忙状态
 
 api反代来自qchatgpt项目中的反代，感谢qchatgpt项目的反代
 
-实现无需连接到 openai 
+实现无需连接到 openai 官方 api 服务
 
 ## 依赖安装
 
