@@ -1,41 +1,44 @@
-# **Fakegpt-chatgpt-with-history**
+# fakegpt_with_history
+一个使用ai.fakeopen.com的api的包含聊天概括功能的chatgpt聊天机器人
 
-~~由 Pandora 项目的 api 地址的实现~~
-
-Pandora项目暂时失败，Pandora项目的接口处于繁忙状态
-
-api反代来自qchatgpt项目中的反代，感谢qchatgpt项目的反代
-
-实现无需连接到 openai 官方 api 服务
+通过大佬zhile-io的项目，实现0消费的chatgpt api调用
 
 ## 依赖安装
-
 ```shell
 pip install openai
+pip install jieba
 ```
 
-## 如何获取Pandora项目的api?
+## 如何获取fk- 的api?
+请参考这个issue: 
 
-Pandora 项目使用假的 api ，类似 fk-xxxxxxxxxxxxxx
+https://github.com/zhile-io/pandora/issues/183
 
-请参考这个issue:
-
-https://githubfast.com/zhile-io/pandora/issues/183
-
-## 项目结构
-
+## 项目结构:
 1.在fake_api.py中定义一个调用ai的函数
 
-2.在main.py中让用户输入一个字符串，加入一个history列表
+2.在token_count.py中定义一个函数来计算token
 
-3.调用ai进行回答,并且输出后加入history列表
+3.在main.py中让用户输入一个字符串，加入一个history列表
 
-4.再次让用户输入,把用户新输入和history列表中所有内容交给chatgpt
+4.调用ai进行回答,并且输出后加入history列表
+
+5.在main.py中调用token_count.py中的函数来计算history列表中的token
+
+6.如果计算出来的token>2500,则调用ai概括,并且覆写进history列表中(可选)
+
+7.再次让用户输入,把用户新输入和history列表中所有内容交给chatgpt
 
 请各位大佬指正,欢迎发起issue
 
-### 这是来自我同学的一个项目
+更新:现在zhile-io大佬的api支持了超大token,几乎完全不用担心token,各位在应用的时候可以去掉token计数,但是在调用官方api时建议加上
 
-## Star
+现在默认不记录token,你可以把main.py中的相关注释去除
 
-![star](https://api.star-history.com/svg?repos=hhhhhge/fakegpt&type=Date)
+## 运行截图
+![image](https://github.com/daishuge/-fakegpt-with-history/assets/122254868/b3204a76-3d1a-4674-a0e7-a3a8aaff7b98)
+
+
+## 遥遥领先, 稳中向好
+
+[![Star History Chart](https://api.star-history.com/svg?repos=daishuge/-fakegpt-with-history&type=Date)](https://star-history.com/#daishuge/-fakegpt-with-history&Date)

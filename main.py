@@ -1,37 +1,41 @@
 from fake_api import fake_api
-import os
-import shutil
+from token_count import token_count
 
-history = []
+history = []    #历史记录储存
 
-def main(query):
-    if not os.path.isfile(os.path.join(os.getcwd(), "config.py")):
-        shutil.copy(os.path.join(os.getcwd(), "config-template.py"), "config.py")
-        print("请修改config.py文件")
-        return None
-    
-    if query == "clear":
-        history.clear()
-        return None
-    else:
+def main():
+
+    while True:
+        query = input("\n\nYou: ")
+        if query == "clear":
+            history.clear()
+            continue
+
         history.append("user:" + query)
-        while True:
-            stream_str = stream(history)
-            if stream_str[1]:
-                break
+        history_string="".join(history)
+        full_result = fake_api(history_string, 2500,True,1)
 
-def stream(query):
-    query_gpt = ''
-    result = fake_api(str(query))
-    for value in result:
-        if value:
-            query_gpt = query_gpt + value
-            return (value,True)
-        else:
-            history.append("chatgpt:" + query_gpt)
-            return (None,False)
+        history.append("chatgpt: " + full_result)
+
+        history_string="".join(history)
+
+        tokens=token_count(history_string)
+'''
+        如果你使用openai官方api,请去掉注释
+        if tokens>10000:
+                print("概括中...")
+
+                history_string="".join(history)
+
+                gaikuo=fake_api("请把这段文字概括成1000个英文单词以内,不要有多余内容: "+history_string,600,False,0.3)
+
+                print("\n\n概括结果:"+gaikuo+"\n\n")
+                
+                history.clear()
+
+                history.append("history:"+gaikuo)
+'''
 
 if __name__ == '__main__':
-    while True:
-        main(input('You:'))
-        print("".join(history))
+    #调用main函数
+    main()
