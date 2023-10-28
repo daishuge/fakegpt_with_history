@@ -1,9 +1,13 @@
 import openai
 import time
 
-def fake_api(query,max,a,tem):
-    openai.api_key = "Your_key"  # 使用假的 API 密钥
-    openai.api_base = "https://ai.fakeopen.com/v1/"
+def fake_api(query,max,stream_true,tem,if_pandora):
+    
+    if if_pandora:
+        openai.api_key = "YOUR_PANDORA_FAKE_KEY "    #fake_api
+        openai.api_base = "https://ai.fakeopen.com/v1/"
+    else:
+        openai.api_key = "YOUR_OPNEIA_REAL_KEY"  #real_api
     start_time = time.time()  # 记录开始时间
 
     response = openai.ChatCompletion.create(
@@ -24,7 +28,7 @@ def fake_api(query,max,a,tem):
             chunk_msg = chunk['choices'][0]['delta'].get('content', '')
             result += chunk_msg  # 将输出内容附加到结果字符串上
 
-            if a:
+            if stream_true:
                 print(chunk_msg, end='', flush=True)
                 time.sleep(0.05)
     
@@ -32,5 +36,6 @@ def fake_api(query,max,a,tem):
 
 if __name__ == '__main__':
     while True:
+        print("\n")
         query = input("You: ")
-        full_result = fake_api(query,1500)  # 将结果保存到 full_result 变量中
+        full_result = fake_api(query,1500,True,0.5)  # 将结果保存到 full_result 变量中
