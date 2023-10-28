@@ -9,7 +9,6 @@ def fake_api(query,max,stream_true,tem,if_pandora):
         openai.api_base = config.base_url
     else:
         openai.api_key = config.openai_api
-    start_time = time.time()  # 记录开始时间
 
     response = openai.ChatCompletion.create(
         model='gpt-3.5-turbo',
