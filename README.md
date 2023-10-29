@@ -89,8 +89,6 @@ base_url = "https://ai.fakeopen.com/v1/"    #pandora反代地址
 
 ## 运行截图
 
-![image](https://github.com/daishuge/-fakegpt-with-history/assets/122254868/b3204a76-3d1a-4674-a0e7-a3a8aaff7b98)
-
 ![image](https://github.com/daishuge/fakegpt_with_history/assets/122254868/6fc2f993-1430-4cf8-98ba-ce14c7d394f1)
 
 
