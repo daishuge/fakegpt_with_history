@@ -12,6 +12,8 @@ exe快捷使用下载:
 
 搭载了我的两个api, 各位轻点用, 有问题请发issue
 
+项目根目录中可以放置一个1.txt,会随机读取一行print,exe文件也一样
+
 ## 依赖安装
 ```shell
 pip install openai
