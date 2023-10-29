@@ -6,7 +6,7 @@
 ## 快捷体验
 exe快捷使用下载:
 
-[google drive]([https://drive.google.com/file/d/1xptgtI0-ZqX_2w08RJc2GA79rzPSh7p-/view?usp=drive_link])
+[google drive](https://drive.google.com/file/d/1xptgtI0-ZqX_2w08RJc2GA79rzPSh7p-/view?usp=drive_link)
 
 [123云盘](https://www.123pan.com/s/izuSVv-5u6XH.html)
 
