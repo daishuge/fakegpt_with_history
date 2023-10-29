@@ -6,9 +6,9 @@
 ## 快捷体验
 exe快捷使用下载:
 
-[google drive](https://drive.google.com/file/d/1xptgtI0-ZqX_2w08RJc2GA79rzPSh7p-/view?usp=drive_link)
+[google drive](https://drive.google.com/file/d/1xvUCXQ2ZND1SSXqk5mSjMAKlOuflYo1E/view?usp=drive_link)
 
-[123云盘](https://www.123pan.com/s/izuSVv-5u6XH.html)
+[123云盘](https://www.123pan.com/s/izuSVv-dU6XH.html)
 
 搭载了我的两个api, 各位轻点用, 有问题请发issue
 
