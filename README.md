@@ -1,14 +1,14 @@
 # fakegpt_with_history
-一个使用ai.fakeopen.com的api的包含聊天概括功能的chatgpt聊天机器人
+一个使用反代的api的包含聊天概括功能的chatgpt聊天机器人,免翻墙,不消耗余额
 
-通过大佬zhile-io的项目，实现0消费的chatgpt api调用
+通过大佬[zhile-io](https://github.com/zhile-io)的[pandora](https://github.com/zhile-io/pandora)项目，实现0消费的chatgpt api调用
 
 ## 快捷体验
 exe快捷使用下载:
 
-google drive: https://drive.google.com/file/d/1xptgtI0-ZqX_2w08RJc2GA79rzPSh7p-/view?usp=drive_link
+[google drive]([https://drive.google.com/file/d/1xptgtI0-ZqX_2w08RJc2GA79rzPSh7p-/view?usp=drive_link])
 
-123云盘: https://www.123pan.com/s/izuSVv-5u6XH.html
+[123云盘](https://www.123pan.com/s/izuSVv-5u6XH.html)
 
 搭载了我的两个api, 各位轻点用, 有问题请发issue
 
@@ -19,14 +19,13 @@ pip install jieba
 ```
 
 ## 如何获取fk- 的api?
-请参考这个issue: 
+请参考这个[issue](https://github.com/zhile-io/pandora/issues/183):
 
-https://github.com/zhile-io/pandora/issues/183
 
 ## 加入pandora服务检查
 由于pandora服务最近不是很稳定,所以加入了检查服务是否正常的功能,如果服务不正常,则会自动切换到openai官方api
 
-灵感来自于我同学hhhhhge: https://github.com/hhhhhge
+灵感来自于我同学[hhhhhge](https://github.com/hhhhhge)
 
 此部分代码:
 
