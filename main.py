@@ -13,25 +13,25 @@ print("\n")
 
 history = []    #历史记录储存
 
-if_pandora=True
-
 def main():
 
     if config.if_pandora:
         print("尝试向pandora发送测试文本...")
 
         try:
-            fake_api("test", 1000, True, 0.5,if_pandora)
+            fake_api("hi", 2500,True,1,config.if_pandora)
         except:
-            if_pandora=False
+            config.if_pandora=False
             print("pandora 连接错误, 尝试官方api")
 
     elif not config.if_pandora:
-        if_pandora=False
+        config.if_pandora=False
 
     time.sleep(1)
 
     print(f'''
+    
+
     起始设置
     是否使用pandora:   {config.if_pandora}
     是否启用概括:      {config.long_text}
@@ -50,7 +50,7 @@ def main():
 
         history.append("user:" + query)
         history_string="".join(history)
-        full_result = fake_api(history_string, 2500,True,1,if_pandora)
+        full_result = fake_api(history_string, 2500,True,1,config.if_pandora)
 
         history.append("chatgpt: " + full_result)
 
@@ -65,7 +65,7 @@ def main():
 
                     history_string="".join(history)
 
-                    gaikuo=fake_api("请把这段文字概括成"+str(config.smaller_text)+"个英文单词以内,不要有多余内容: "+history_string,600,True,0.3,if_pandora)
+                    gaikuo=fake_api("请把这段文字概括成"+str(config.smaller_text)+"个英文单词以内,不要有多余内容,特别注意千万不要超过单词数: "+history_string,600,True,0.3,config.if_pandora)
                     
                     history.clear()
 
