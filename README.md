@@ -35,7 +35,7 @@ main.py中的调用:
 
 ```python
 try:
-    fake_api("test", 1000, True, 0.5,if_pandora)
+    fake_api("test", 1000, True, 0.5,config.if_pandora)
 except:
     if_pandora=False
     print("pandora 连接错误, 尝试官方api")
@@ -65,7 +65,7 @@ except:
 ## 配置文件
 在2023.10.28更新中,加入了配置文件
 
-配置文件长这样:
+配置文件差不多长这样:
 
 ```python
 if_pandora = True                           #是否尝试使用pandora反代
