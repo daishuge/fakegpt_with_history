@@ -2,10 +2,19 @@ import time
 from fake_api import fake_api
 from token_count import token_count
 import config
+import random
+
+def print_random():
+    with open("1.txt", 'r', encoding='utf-8') as file:
+        lines = file.readlines()
+        if not lines:
+            return 1  # 如果文件为空，返回None
+        print(random.choice(lines).strip())
+        return 0
 
 print('''
 作者: daishuge袋鼠哥
-github.com/daishuge/fakegpt_with_history
+项目地址: https://github.com/daishuge/fakegpt_with_history
 ''')
 print("加载分词中...\n")
 token_count("1")    #初始化jieba
@@ -29,8 +38,13 @@ def main():
 
     time.sleep(1)
 
+    try:
+        print("\n")
+        print_random()
+    except:
+        print("冷知识: 你的1.txt没了!!!")
+
     print(f'''
-    
 
     起始设置
     是否使用pandora:   {config.if_pandora}
@@ -46,6 +60,7 @@ def main():
         query = input("\n\nYou: ")
         if query == "clear":
             history.clear()
+            print("历史记录已清空!")
             continue
 
         history.append("user:" + query)
