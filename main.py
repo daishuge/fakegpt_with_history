@@ -99,8 +99,10 @@ def main():
 
                     history_string="".join(history)
 
+                    ask="请把这段文字概括成"+str(config.smaller_text)+"个英文单词以内,不要有多余内容,特别注意千万不要超过单词数: "
+                    
                     try:
-                        gaikuo=fake_api("请把这段文字概括成"+str(config.smaller_text)+"个英文单词以内,不要有多余内容,特别注意千万不要超过单词数: "+history_string,600,True,0.3,config.if_pandora,config.model)
+                        gaikuo=fake_api(ask+history_string,600,True,0.3,config.if_pandora,config.model)
                         history.clear()
                         history.append("history:"+gaikuo)
                     except:
@@ -108,12 +110,17 @@ def main():
                         config.model="gpt-3.5-turbo"
                     
                     try:
-                        gaikuo=fake_api("请把这段文字概括成"+str(config.smaller_text)+"个英文单词以内,不要有多余内容,特别注意千万不要超过单词数: "+history_string,600,True,0.3,config.if_pandora,config.model)
+                        gaikuo=fake_api(ask+history_string,600,True,0.3,config.if_pandora,config.model)
                         history.clear()
                         history.append("history:"+gaikuo)
                     except:
                         print("pandora错误!")
                         config.if_pandora=False
+
+                    # gaikuo=fake_api(ask+history_string,600,True,0.3,config.if_pandora,config.model)
+                    # history.clear()
+                    # history.append("history:"+gaikuo)
+
 
 if __name__ == '__main__':
     main()

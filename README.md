@@ -6,6 +6,24 @@
 ## 10.30加入了gpt-4模型适配
 并且加入大量错误处理
 
+比如这里,就详尽的考虑了gpt-4和gpt-3.5-turbo和pandora的错误处理:
+
+```python
+if config.model=="gpt-4":
+    try:
+        print("尝试向pandora发送测试文本...")
+        fake_api("hi", 2500,True,1,config.if_pandora,config.model)
+    except:
+        print("gpt4连接失败!")
+        config.model="gpt-3.5-turbo"
+        
+        try:
+            print("尝试向pandora发送测试文本...")
+            fake_api("hi", 2500,True,1,config.if_pandora,config.model)
+        except:
+            print("pandora连接失败!")
+        config.if_pandora=False
+```
 ## 依赖安装
 ```shell
 pip install openai
