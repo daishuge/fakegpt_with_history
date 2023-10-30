@@ -10,7 +10,21 @@ pip install jieba
 ```
 
 ## 如何获取fk- 的api?
-请参考这个[issue](https://github.com/zhile-io/pandora/issues/183):
+请参考这个[issue](https://github.com/zhile-io/pandora/issues/183)
+
+摘要如下:
+
+>    免梯获取access token: https://ai.fakeopen.com/auth
+>    官方获取access token: http://chat.openai.com/api/auth/session
+>    生成可模拟api的share token: https://ai.fakeopen.com/token
+
+图省事,轻度使用可以使用我的api:
+
+```
+fk-dUTawMfIzwsfkEn_H3YBi1oQGXmlbIxkDwSktK0IykU
+```
+
+君子协定, 请勿使用太多
 
 
 ## 加入pandora服务检查
