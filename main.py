@@ -4,14 +4,6 @@ from token_count import token_count
 import config
 import random
 
-def print_random():
-    with open("1.txt", 'r', encoding='utf-8') as file:
-        lines = file.readlines()
-        if not lines:
-            return 1  # 如果文件为空，返回None
-        print(random.choice(lines).strip())
-        return 0
-
 print('''
 作者: daishuge袋鼠哥
 项目地址: https://github.com/daishuge/fakegpt_with_history
@@ -37,12 +29,6 @@ def main():
         config.if_pandora=False
 
     time.sleep(1)
-
-    try:
-        print("\n")
-        print_random()
-    except:
-        print("冷知识: 你的1.txt没了!!!")
 
     print(f'''
 

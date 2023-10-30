@@ -3,17 +3,6 @@
 
 通过大佬[zhile-io](https://github.com/zhile-io)的[pandora](https://github.com/zhile-io/pandora)项目，实现0消费的chatgpt api调用
 
-## 快捷体验
-exe快捷使用下载:
-
-[google drive](https://drive.google.com/file/d/1xvUCXQ2ZND1SSXqk5mSjMAKlOuflYo1E/view?usp=drive_link)
-
-[123云盘](https://www.123pan.com/s/izuSVv-dU6XH.html)
-
-搭载了我的两个api, 各位轻点用, 有问题请发issue
-
-项目根目录中可以放置一个1.txt,会随机读取一行print,exe文件也一样
-
 ## 依赖安装
 ```shell
 pip install openai
