@@ -7,6 +7,9 @@ smaller_text = 50                                                   #概括成�
 
 openai_api = "REAL_KEY"  #real_key
 pandora_api = "FAKE_KEY"      #fake_key
+# model="gpt-3.5-turbo"
+model="gpt-4"
+
 base_url = "https://ai.fakeopen.com/v1/"                            #pandora项目用的反代
 
 print("配置文件导入成功")

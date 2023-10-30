@@ -2,7 +2,7 @@ import openai
 import time
 import config
 
-def fake_api(query,max,stream_true,tem,if_pandora):
+def fake_api(query,max,stream_true,tem,if_pandora,md):
     
     if if_pandora:
         openai.api_key = config.pandora_api  #pandora_api
@@ -12,7 +12,7 @@ def fake_api(query,max,stream_true,tem,if_pandora):
     # start_time = time.time()  # 记录开始时间
 
     response = openai.ChatCompletion.create(
-        model='gpt-3.5-turbo',
+        model=md,
         messages=[
             {'role': 'user', 'content': query}
         ],
@@ -39,4 +39,4 @@ if __name__ == '__main__':
     while True:
         print("\n")
         query = input("You: ")
-        full_result = fake_api(query,1500,True,0.5,config.if_pandora)  # 将结果保存到 full_result 变量中
+        full_result = fake_api(query,1500,True,0.5,config.if_pandora,config.model)  # 将结果保存到 full_result 变量中

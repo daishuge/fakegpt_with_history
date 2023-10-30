@@ -3,6 +3,9 @@
 
 通过大佬[zhile-io](https://github.com/zhile-io)的[pandora](https://github.com/zhile-io/pandora)项目，实现0消费的chatgpt api调用
 
+## 10.30加入了gpt-4模型适配
+并且加入大量错误处理
+
 ## 依赖安装
 ```shell
 pip install openai

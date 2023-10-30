@@ -14,25 +14,47 @@ print("\n")
 
 history = []    #历史记录储存
 
-def main():
+def try_mod():
+    print("目前模型: "+config.model)
 
-    if config.if_pandora:
-        print("尝试向pandora发送测试文本...")
-
+    if config.model=="gpt-3.5-turbo":
         try:
-            fake_api("hi", 2500,True,1,config.if_pandora)
+            print("尝试向pandora发送测试文本...")
+            fake_api("hi", 2500,True,1,config.if_pandora,config.model)
         except:
-            config.if_pandora=False
-            print("pandora 连接错误, 尝试官方api")
+            print("pandora连接失败!")
 
-    elif not config.if_pandora:
         config.if_pandora=False
 
+    
+    if config.model=="gpt-4":
+        try:
+            print("尝试向pandora发送测试文本...")
+            fake_api("hi", 2500,True,1,config.if_pandora,config.model)
+        except:
+            print("gpt4连接失败!")
+            config.model="gpt-3.5-turbo"
+            
+            try:
+                print("尝试向pandora发送测试文本...")
+                fake_api("hi", 2500,True,1,config.if_pandora,config.model)
+            except:
+                print("pandora连接失败!")
+
+            config.if_pandora=False
+            
+
+def main():
+
+    try_mod()
+
     time.sleep(1)
+
 
     print(f'''
 
     起始设置
+    模型:              {config.model}
     是否使用pandora:   {config.if_pandora}
     是否启用概括:      {config.long_text}
     到达此token则概括: {config.max_token}
@@ -51,7 +73,18 @@ def main():
 
         history.append("user:" + query)
         history_string="".join(history)
-        full_result = fake_api(history_string, 2500,True,1,config.if_pandora)
+
+        try:
+            full_result = fake_api(history_string, 2500,True,1,config.if_pandora,config.model)
+        except:
+            print("gpt-4余额用光!")
+            config.model="gpt-3.5-turbo"
+        
+        try:
+            full_result = fake_api(history_string, 2500,True,1,config.if_pandora,config.model)
+        except:
+            print("pandora错误!")
+            config.if_pandora=False
 
         history.append("chatgpt: " + full_result)
 
@@ -66,11 +99,21 @@ def main():
 
                     history_string="".join(history)
 
-                    gaikuo=fake_api("请把这段文字概括成"+str(config.smaller_text)+"个英文单词以内,不要有多余内容,特别注意千万不要超过单词数: "+history_string,600,True,0.3,config.if_pandora)
+                    try:
+                        gaikuo=fake_api("请把这段文字概括成"+str(config.smaller_text)+"个英文单词以内,不要有多余内容,特别注意千万不要超过单词数: "+history_string,600,True,0.3,config.if_pandora,config.model)
+                        history.clear()
+                        history.append("history:"+gaikuo)
+                    except:
+                        print("gpt-4余额用光!")
+                        config.model="gpt-3.5-turbo"
                     
-                    history.clear()
-
-                    history.append("history:"+gaikuo)
+                    try:
+                        gaikuo=fake_api("请把这段文字概括成"+str(config.smaller_text)+"个英文单词以内,不要有多余内容,特别注意千万不要超过单词数: "+history_string,600,True,0.3,config.if_pandora,config.model)
+                        history.clear()
+                        history.append("history:"+gaikuo)
+                    except:
+                        print("pandora错误!")
+                        config.if_pandora=False
 
 if __name__ == '__main__':
     main()
