@@ -1,8 +1,0 @@
-提示: clear来清空历史记录
-冷知识: google还有个母公司
-华为行业百草枯!!!
-chatgpt NB!!!
-热知识: 这个项目可以这样打包: pyinstaller --onefile --icon=gpt_logo.ico main.py
-本人微信: 不告诉你
-本人QQ: 不告诉你
-本人github: 你都能看到这个了我告诉你干嘛?

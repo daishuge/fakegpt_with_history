@@ -78,6 +78,8 @@ base_url = "https://ai.fakeopen.com/v1/"    #pandora反代地址
 
 你可以在配置文件中进行设置
 
+## 需要一名会ui的大佬!!!
+
 ## 运行截图
 
 ![image](https://github.com/daishuge/fakegpt_with_history/assets/122254868/6fc2f993-1430-4cf8-98ba-ce14c7d394f1)
