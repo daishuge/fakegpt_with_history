@@ -2,8 +2,6 @@ import os
 import sys
 import shutil
 
-token_max = 1024
-
 history = []
 
 # 初始化部分
@@ -16,9 +14,9 @@ from chatgpt_api import fake_api
 from token_count import token_count
 import config
 
-token_max = config.api_key
+token_max = config.token_max
 
-# main函数
+# chat函数
 def chat(query):
     if query == "clear":
         history.clear()
@@ -29,16 +27,16 @@ def chat(query):
         api = fake_api(query)
         for value in api:
             if value:
+                print(value)
                 query_gpt += value
         history.append("chatgpt:" + query_gpt)
-        token()
+        token("".join(history))
         return query_gpt
 
 
 # token计算
-def token():
-    token = token_count("".join(history))
-    if token >= token_max:
+def token(token_used):
+    if token_used >= token_max:
         print("概括中...")
         history_str="".join(history)
         result=fake_api(f"请把这段文字概括成{token_max/2}个单词以内,不要有多余内容: \n"+history_str)
@@ -50,4 +48,5 @@ def token():
         history.append("history:"+cache)
 
 if __name__ == '__main__':
-    print(chat(input('You:')))
+    while True:
+        chat(input('You:'))
