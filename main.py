@@ -80,11 +80,11 @@ def main():
             print("gpt-4余额用光!")
             config.model="gpt-3.5-turbo"
         
-        try:
-            full_result = fake_api(history_string, 2500,True,1,config.if_pandora,config.model)
-        except:
-            print("pandora错误!")
-            config.if_pandora=False
+            try:
+                full_result = fake_api(history_string, 2500,True,1,config.if_pandora,config.model)
+            except:
+                print("pandora错误!")
+                config.if_pandora=False
 
         history.append("chatgpt: " + full_result)
 
