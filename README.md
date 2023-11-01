@@ -20,4 +20,4 @@ Pandora 项目使用FakeGPT api ，类似 fk-xxxxxxxxxxxxxx
 
 ## Star
 
-![star](https://api.star-history.com/svg?repos=hhhhhge/fakegpt&type=Date)
+![star](https://api.star-history.com/svg?repos=hhhhhge/PandoraGPT&type=Date)
