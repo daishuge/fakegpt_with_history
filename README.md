@@ -1,7 +1,6 @@
 # **Chatgpt-with-history**
 
-由Python封装的调用Chatgpt并流式返回的方法并具有历史和对话概括功能
-并且Pandora项目的地址也可用
+使用Pandora项目的地址实现的ChatGPT
 
 ## 依赖安装
 
