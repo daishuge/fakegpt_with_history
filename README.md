@@ -10,7 +10,7 @@ pip install openai
 
 ## 如何获取Pandora项目的api?
 
-Pandora 项目使用假的 api ，类似 fk-xxxxxxxxxxxxxx
+Pandora 项目使用FakeGPT api ，类似 fk-xxxxxxxxxxxxxx
 
 请参考这个issue:
 
