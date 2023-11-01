@@ -1,11 +1,11 @@
-# **Chatgpt-with-history**
+# **Pandora-Chatgpt-with-history**
 
 使用Pandora项目的地址实现的ChatGPT
 
 ## 依赖安装
 
 ```shell
-pip install openai jieba
+pip install openai
 ```
 
 ## 如何获取Pandora项目的api?
