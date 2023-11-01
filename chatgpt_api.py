@@ -11,7 +11,7 @@ def fake_api(query, model=config.model, temperature=0.8, max_tokens=2048):
             {'role': 'user', 'content': query}
         ],
         temperature=temperature,
-        max_tokens=max,
+        max_tokens=max_tokens,
         stream=True
     )
 

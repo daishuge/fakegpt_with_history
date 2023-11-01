@@ -1,8 +1,13 @@
 api_base = "https://ai.fakeopen.com/v1/"
 
-api_key = ""
+api_key = "pk-this-is-a-real-free-pool-token-for-everyone"
 
-model= ""
+'''
+可以使用自己的 Pandora 的 share token 或 pool token
+当然也可以在这里填写 Pandora 项目给的免费 pool token： pk-this-is-a-real-free-pool-token-for-everyone
+'''
+
+model= "gpt-3.5-turbo"
 
 '''
 gpt-3.5-turbo -> text-davinci-002-render-sha，真实长度为：8K 。
