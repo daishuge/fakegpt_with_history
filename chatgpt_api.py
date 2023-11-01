@@ -4,14 +4,14 @@ import config
 openai.api_base = config.api_base
 openai.api_key = config.api_key
 
-def fake_api(query, max=2048, tem=0.8):
+def fake_api(query, model=config.model, temperature=0.8, max_tokens=2048):
     response = openai.ChatCompletion.create(
-        model='gpt-3.5-turbo',
+        model=model,
         messages=[
             {'role': 'user', 'content': query}
         ],
-        temperature=tem,
-        max_tokens=max,
+        temperature=temperature,
+        max_tokens=max_tokens,
         stream=True
     )
 
@@ -28,5 +28,5 @@ if __name__ == '__main__':
     api = fake_api("你好")
     for value in api:
         if value:
-            print(value, end='', flush=True)
+            print(value, end='')
 

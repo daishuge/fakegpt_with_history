@@ -1,37 +1,35 @@
-from fake_api import fake_api
 import os
+import sys
 import shutil
+
+token_max = 1024
 
 history = []
 
-def main(query):
-    if not os.path.isfile(os.path.join(os.getcwd(), "config.py")):
-        shutil.copy(os.path.join(os.getcwd(), "config-template.py"), "config.py")
-        print("请修改config.py文件")
-        return None
-    
+# 初始化部分
+if not os.path.isfile(os.path.join(os.getcwd(), "config.py")):
+    shutil.copy(os.path.join(os.getcwd(), "config-template.py"), os.path.join(os.getcwd(), "config.py"))
+    print("请修改config.py文件")
+    sys.exit()
+
+from chatgpt_api import fake_api
+
+# main函数
+def chat(query):
     if query == "clear":
         history.clear()
         return None
     else:
         history.append("user:" + query)
-        while True:
-            stream_str = stream(history)
-            if stream_str[1]:
-                break
-
-def stream(query):
-    query_gpt = ''
-    result = fake_api(str(query))
-    for value in result:
-        if value:
-            query_gpt = query_gpt + value
-            return (value,True)
-        else:
-            history.append("chatgpt:" + query_gpt)
-            return (None,False)
+        query_gpt = ''
+        api = fake_api(query)
+        for value in api:
+            if value:
+                print(value,end='')
+                query_gpt += value
+        print()
+        history.append("chatgpt:" + query_gpt)
 
 if __name__ == '__main__':
     while True:
-        main(input('You:'))
-        print("".join(history))
+        chat(input('You:'))
