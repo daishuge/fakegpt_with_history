@@ -16,6 +16,8 @@ Pandora 项目使用FakeGPT api ，类似 fk-xxxxxxxxxxxxxx
 
 <https://githubfast.com/zhile-io/pandora/issues/183>
 
+### 用给的共享池没有流式输出
+
 ### 这是来自我同学的一个项目
 
 ## Star
