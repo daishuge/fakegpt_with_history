@@ -3,7 +3,7 @@ from shapely import affinity
 from shapely.geometry import box
 from shapely.ops import unary_union
 
-from lettering import D, X, caps_line, set_text
+from lettering import D, LOWER, X, caps_line, set_text
 from marks import document, handshake
 
 MARK_GAP = 0.22 * X                 # optical gap between a pictogram and its neighbours
@@ -106,5 +106,8 @@ def square_handshake(side=1000.0):
     return square(handshake(), side, 0.58)
 
 
-def square_si(side=1000.0, height_ratio=0.50):
-    return square(set_text('si'), side, height_ratio)
+def square_si(side=1000.0, height_ratio=0.58):
+    """Capital S + lowercase i: the top of the S lines up with the i dot, so the pair is nearly square."""
+    cap_s = LOWER['S']()
+    cap_s = affinity.translate(cap_s, -cap_s.bounds[0], 0)
+    return square(unary_union([cap_s, _slide(cap_s, LOWER['i'](), 0.24 * X)]), side, height_ratio)

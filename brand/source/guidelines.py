@@ -145,9 +145,9 @@ def page(fragment=False):
         'APP': u('app', 'spec-app', 'App 图标'),
         'MARK': u('mark', 'spec-mark', '握手图形'),
         'SQ_HAND': u('sq-hand', 'sq', '方形标志：握手'),
-        'SQ_SI': u('sq-si', 'sq', '方形标志：si'),
+        'SQ_SI': u('sq-si', 'sq', '方形标志：Si'),
         'SQ_HAND_W': u('sq-hand-w', 'sq sq-w', '方形标志：握手，白底'),
-        'SQ_SI_W': u('sq-si-w', 'sq sq-w', '方形标志：si，白底'),
+        'SQ_SI_W': u('sq-si-w', 'sq sq-w', '方形标志：Si，白底'),
         'CONSTRUCTION': construction_svg(),
         'CLEARSPACE': clearspace_svg(),
         'MIN_LOCKUP': u('lockup', 'min-lockup', '主标志最小尺寸'),
@@ -395,7 +395,7 @@ BODY = """{{SPRITE}}
   <div class="item"><figure class="spec sp-white">{{APP}}</figure><p class="cap"><b>图形标 · App 图标</b>　白色握手在皇家蓝圆角方块中，占方块高度的 60%。</p></div>
   <div class="item"><figure class="spec sp-mist">{{MARK}}</figure><p class="cap"><b>图形标 · 单独使用</b>　头像、贴纸、周边。握手不单独加文字以外的装饰。</p></div>
   <div class="item span2"><figure class="spec sp-mist"><div class="sq-row">{{SQ_HAND}}{{SQ_SI}}{{SQ_HAND_W}}{{SQ_SI_W}}</div></figure>
-   <p class="cap"><b>方形标志 1:1 · 握手 / si</b>　社交头像、公众号、群头像。满版正方形不带圆角，由平台自己裁成圆形或圆角；图形按视觉重心居中，裁成圆形也不会切到。</p></div>
+   <p class="cap"><b>方形标志 1:1 · 握手 / Si</b>　社交头像、公众号、群头像。Si 用大写 S 配小写 i，S 的顶与 i 点齐平，字组接近正方形。满版正方形不带圆角，由平台自己裁成圆形或圆角；图形按视觉重心居中，裁成圆形也不会切到。</p></div>
  </div>
 </section>
 
@@ -500,7 +500,7 @@ BODY = """{{SPRITE}}
   <div class="file"><code>brand/logo/teamwith-si_mark.svg</code><span>握手图形</span></div>
   <div class="file"><code>brand/logo/teamwith-si_app-icon.svg</code><span>App 图标，PNG 为 1024 / 512 / 180 px</span></div>
   <div class="file"><code>brand/logo/favicon.ico · favicon.svg</code><span>网站图标（加粗版）</span></div>
-  <div class="file"><code>brand/logo/square/</code><span>方形标志 1:1：握手、si，蓝底 / 白底 / 透明，PNG 1024 / 512 px</span></div>
+  <div class="file"><code>brand/logo/square/</code><span>方形标志 1:1：握手、Si，蓝底 / 白底 / 透明，PNG 1024 / 512 px</span></div>
   <div class="file"><code>brand/logo/png/</code><span>各版本 PNG，透明底</span></div>
   <div class="file"><code>brand/products/filemaster/</code><span>filemaster.teamwith.si 组合、简标、文件图标</span></div>
   <div class="file"><code>brand/source/</code><span>生成脚本：单线字、握手、组合规则</span></div>
