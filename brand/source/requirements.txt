@@ -1,0 +1,4 @@
+shapely>=2.0
+fonttools>=4.40
+cairosvg>=2.7
+pillow>=10.0
