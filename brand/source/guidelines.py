@@ -111,7 +111,7 @@ def heart_reveal_svg():
             f'<path class="rv-hand" fill-rule="evenodd" d="{export.path_d(hs, x0 - pad, y0 - pad)}"/></svg>')
 
 
-def page(fragment=False):
+def build_sprite():
     sp = Sprite()
     sp.add('lockup', master_lockup())
     sp.add('logotype', master_logotype())
@@ -130,7 +130,11 @@ def page(fragment=False):
     sp.add_tile('sq-si', 1000.0, 0, square_si())
     sp.add_tile('sq-hand-w', 1000.0, 0, square_handshake(), '#FFFFFF', '#123E8C')
     sp.add_tile('sq-si-w', 1000.0, 0, square_si(), '#FFFFFF', '#123E8C')
+    return sp
 
+
+def page(fragment=False):
+    sp = build_sprite()
     u = sp.use
     body = BODY
     for key, val in {
@@ -354,6 +358,21 @@ dl{margin:0}
 .cmd{margin-top:22px;background:#0B1730;color:#DCE6F8;border-radius:14px;padding:16px 18px;font-family:var(--mono);font-size:13.5px;
   overflow-x:auto;white-space:pre}
 footer{border-top:1px solid var(--line);padding-block:30px 48px;font-size:13px;color:var(--muted);display:flex;gap:10px 30px;flex-wrap:wrap}
+@media print{
+  @page{size:A4;margin:12mm}
+  :root{--paper:#FFFFFF;--surface:#FFFFFF}
+  body{font-size:13px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .toc{display:none}
+  section{padding-block:26px;break-inside:auto}
+  .sec-head{margin-bottom:18px;break-after:avoid-page}
+  #files{break-before:page}
+  .g2{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:repeat(3,minmax(0,1fr))}.span2{grid-column:span 2}
+  .spec{min-height:150px;padding:22px}
+  .hero-spec{padding-block:56px}
+  .item,.spec,.sw,.dont,.min,.type-card,.browser,.cards,.dock,.scroll,.file,.specs div,.rules li{break-inside:avoid}
+  .scroll{overflow:visible}.diagram{min-width:0}
+  .spec-app,.sq,.dock-icon,.bc,.browser{box-shadow:none}
+}
 </style>
 """
 

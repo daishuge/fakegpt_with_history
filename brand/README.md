@@ -18,8 +18,10 @@ teamwith.si 读作 team with Super Intelligence，和超级智能组队。
 - `logo/teamwith-si_app-icon.svg`：App 图标，PNG 为 1024 / 512 / 180 px
 - `logo/favicon.ico`、`logo/favicon.svg`：网站图标（加粗版，适合 16 / 32 px）
 - `logo/png/`：各版本透明底 PNG
+- `logo/square/`：1:1 方形标志（握手、Si），蓝底 / 白底 / 透明
 - `products/filemaster/`：filemaster.teamwith.si 组合、简标、文件图标
-- `guidelines/index.html`：品牌手册
+- `guidelines/index.html`、`guidelines/brand-book.pdf`：品牌手册（网页版 / A4 PDF）
+- `guidelines/usage-guide.pdf`：标志包使用说明（4 页 A4）
 - `source/`：生成以上全部文件的脚本
 
 ## 要点
@@ -51,8 +53,11 @@ file master  [文件图标]  team with  [握手]  si
 cd brand/source
 pip install -r requirements.txt
 python build.py        # 标志文件
-python guidelines.py   # 品牌手册
+python guidelines.py   # 品牌手册（网页版）
+python package.py      # 全部文件 + 使用说明 + 手册 PDF 打包到 brand/dist/teamwith-si_brand_v1.0.zip
 ```
+
+`package.py` 用 headless Chromium 把手册和使用说明渲染成 PDF，需要 Node.js 和 Playwright。
 
 ## 授权
 
