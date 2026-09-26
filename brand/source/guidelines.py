@@ -12,7 +12,7 @@ from shapely.ops import nearest_points
 import export
 from lettering import A, D, W, X, set_text
 from lockups import (FULL_NAME, MARK_GAP, app_icon, clear_space_box, filemaster_lockup, master_lockup,
-                     master_logotype, master_pieces)
+                     master_logotype, master_pieces, square_handshake, square_si)
 from marks import document, handshake
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -29,11 +29,11 @@ class Sprite:
         self.symbols.append(f'<symbol id="{sid}" viewBox="0 0 {N(x1 - x0)} {N(y1 - y0)}">'
                             f'<path fill="currentColor" fill-rule="evenodd" d="{export.path_d(geom, x0, y0)}"/></symbol>')
 
-    def add_tile(self, sid, side, radius, mark):
+    def add_tile(self, sid, side, radius, mark, bg='#123E8C', fg='#FFFFFF'):
         self.boxes[sid] = (side, side)
         self.symbols.append(f'<symbol id="{sid}" viewBox="0 0 {N(side)} {N(side)}">'
-                            f'<rect width="{N(side)}" height="{N(side)}" rx="{N(radius)}" fill="#123E8C"/>'
-                            f'<path fill="#FFFFFF" fill-rule="evenodd" d="{export.path_d(mark)}"/></symbol>')
+                            f'<rect width="{N(side)}" height="{N(side)}" rx="{N(radius)}" fill="{bg}"/>'
+                            f'<path fill="{fg}" fill-rule="evenodd" d="{export.path_d(mark)}"/></symbol>')
 
     def use(self, sid, cls='', label='', extra=''):
         w, h = self.boxes[sid]
@@ -126,6 +126,10 @@ def page(fragment=False):
     sp.add_tile('app-fm', side, radius, m)
     side, radius, m = app_icon(mark_ratio=0.66, thicken=2.5)
     sp.add_tile('fav', side, radius, m)
+    sp.add_tile('sq-hand', 1000.0, 0, square_handshake())
+    sp.add_tile('sq-si', 1000.0, 0, square_si())
+    sp.add_tile('sq-hand-w', 1000.0, 0, square_handshake(), '#FFFFFF', '#123E8C')
+    sp.add_tile('sq-si-w', 1000.0, 0, square_si(), '#FFFFFF', '#123E8C')
 
     u = sp.use
     body = BODY
@@ -140,6 +144,10 @@ def page(fragment=False):
         'LOGOTYPE': u('logotype', 'spec-logo', '简标'),
         'APP': u('app', 'spec-app', 'App 图标'),
         'MARK': u('mark', 'spec-mark', '握手图形'),
+        'SQ_HAND': u('sq-hand', 'sq', '方形标志：握手'),
+        'SQ_SI': u('sq-si', 'sq', '方形标志：si'),
+        'SQ_HAND_W': u('sq-hand-w', 'sq sq-w', '方形标志：握手，白底'),
+        'SQ_SI_W': u('sq-si-w', 'sq sq-w', '方形标志：si，白底'),
         'CONSTRUCTION': construction_svg(),
         'CLEARSPACE': clearspace_svg(),
         'MIN_LOCKUP': u('lockup', 'min-lockup', '主标志最小尺寸'),
@@ -232,6 +240,9 @@ section{padding-block:clamp(48px,7vw,84px);border-top:1px solid var(--line)}
 .spec-logo{width:min(560px,100%);height:auto}
 .spec-app{width:132px;height:132px;border-radius:30px;box-shadow:0 10px 30px -12px rgba(11,37,84,.45)}
 .spec-mark{width:120px;height:auto}
+.sq-row{display:flex;flex-wrap:wrap;gap:18px;justify-content:center}
+.sq{width:120px;height:120px;border-radius:16px;box-shadow:0 10px 26px -14px rgba(11,37,84,.55)}
+.sq-w{box-shadow:0 0 0 1px #DCE2EC,0 10px 26px -14px rgba(11,37,84,.35)}
 .idea{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:18px 30px;width:100%}
 .idea-plain{width:min(330px,100%);height:auto;color:#9AA6BC}
 .idea-logo{width:min(380px,100%);height:auto}
@@ -383,6 +394,8 @@ BODY = """{{SPRITE}}
   <div class="item"><figure class="spec sp-navy">{{LOGOTYPE}}</figure><p class="cap"><b>简标 · 深色底</b>　深色界面与暗色模式。</p></div>
   <div class="item"><figure class="spec sp-white">{{APP}}</figure><p class="cap"><b>图形标 · App 图标</b>　白色握手在皇家蓝圆角方块中，占方块高度的 60%。</p></div>
   <div class="item"><figure class="spec sp-mist">{{MARK}}</figure><p class="cap"><b>图形标 · 单独使用</b>　头像、贴纸、周边。握手不单独加文字以外的装饰。</p></div>
+  <div class="item span2"><figure class="spec sp-mist"><div class="sq-row">{{SQ_HAND}}{{SQ_SI}}{{SQ_HAND_W}}{{SQ_SI_W}}</div></figure>
+   <p class="cap"><b>方形标志 1:1 · 握手 / si</b>　社交头像、公众号、群头像。满版正方形不带圆角，由平台自己裁成圆形或圆角；图形按视觉重心居中，裁成圆形也不会切到。</p></div>
  </div>
 </section>
 
@@ -487,6 +500,7 @@ BODY = """{{SPRITE}}
   <div class="file"><code>brand/logo/teamwith-si_mark.svg</code><span>握手图形</span></div>
   <div class="file"><code>brand/logo/teamwith-si_app-icon.svg</code><span>App 图标，PNG 为 1024 / 512 / 180 px</span></div>
   <div class="file"><code>brand/logo/favicon.ico · favicon.svg</code><span>网站图标（加粗版）</span></div>
+  <div class="file"><code>brand/logo/square/</code><span>方形标志 1:1：握手、si，蓝底 / 白底 / 透明，PNG 1024 / 512 px</span></div>
   <div class="file"><code>brand/logo/png/</code><span>各版本 PNG，透明底</span></div>
   <div class="file"><code>brand/products/filemaster/</code><span>filemaster.teamwith.si 组合、简标、文件图标</span></div>
   <div class="file"><code>brand/source/</code><span>生成脚本：单线字、握手、组合规则</span></div>

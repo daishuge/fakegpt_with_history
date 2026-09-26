@@ -91,3 +91,20 @@ def app_icon(mark_ratio=0.60, radius_ratio=0.225, thicken=0.0, mark=None):
 def clear_space_box(geom, margin=X):
     x0, y0, x1, y1 = geom.bounds
     return box(x0 - margin, y0 - margin, x1 + margin, y1 + margin)
+
+
+def square(geom, side=1000.0, height_ratio=0.58, optical=0.5):
+    """Centre a mark in a side x side square. Vertical position blends the box centre with the ink centroid."""
+    k = side * height_ratio / (geom.bounds[3] - geom.bounds[1])
+    g = affinity.scale(geom, k, k, origin=(0, 0))
+    x0, y0, x1, y1 = g.bounds
+    cy = (1 - optical) * (y0 + y1) / 2 + optical * g.centroid.y
+    return affinity.translate(g, side / 2 - (x0 + x1) / 2, side / 2 - cy)
+
+
+def square_handshake(side=1000.0):
+    return square(handshake(), side, 0.58)
+
+
+def square_si(side=1000.0, height_ratio=0.50):
+    return square(set_text('si'), side, height_ratio)

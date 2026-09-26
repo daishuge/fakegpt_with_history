@@ -2,7 +2,7 @@
 from pathlib import Path
 
 import export
-from lockups import app_icon, filemaster_lockup, master_logotype, master_lockup
+from lockups import app_icon, filemaster_lockup, master_logotype, master_lockup, square_handshake, square_si
 from marks import document, handshake
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -37,6 +37,16 @@ def main():
     for w in (32, 16):
         export.png(fav, LOGO / 'png' / f'favicon_{w}.png', w)
     export.ico(fav, LOGO / 'favicon.ico')
+
+    # 1:1 squares for avatars: full bleed, platforms apply their own mask
+    for name, geom in (('handshake', square_handshake()), ('si', square_si())):
+        for suffix, bg, fg in (('', ROYAL_BLUE, WHITE), ('_white-bg', WHITE, ROYAL_BLUE)):
+            doc = export.tile_svg(1000.0, 0, geom, bg, fg)
+            export.write(LOGO / 'square' / f'teamwith-si_square-{name}{suffix}.svg', doc)
+            for w in (1024, 512):
+                export.png(doc, LOGO / 'square' / 'png' / f'teamwith-si_square-{name}{suffix}_{w}.png', w)
+        export.write(LOGO / 'square' / f'teamwith-si_square-{name}_transparent.svg',
+                     export.svg([(geom, ROYAL_BLUE)], bounds=(0, 0, 1000.0, 1000.0)))
 
     fm = PRODUCTS / 'filemaster'
     colourways('filemaster.teamwith-si', filemaster_lockup(), fm, (1200, 2400))
