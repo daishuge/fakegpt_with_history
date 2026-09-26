@@ -17,7 +17,7 @@ def page():
         'HERO': u('lockup', 'hero', 'teamwith.si 主标志'),
         'T_LOCKUP': u('lockup', 'th-w', ''), 'T_LOGOTYPE': u('logotype', 'th-w', ''),
         'T_MARK': u('mark', 'th-h', ''), 'T_SQ': u('sq-si', 'th-sq', ''), 'T_SQ2': u('sq-hand', 'th-sq', ''),
-        'T_APP': u('app', 'th-sq r', ''), 'T_FAV': u('fav', 'th-fav', ''), 'T_FM': u('fm-logotype', 'th-w', ''),
+        'T_APP': u('app', 'th-sq r', ''), 'T_FAV': u('fav', 'th-fav', ''), 'T_FM': u('fm-stack', 'th-w', ''),
         'CLEAR': clearspace_svg(),
         'BG_WHITE': u('logotype', 'bg-logo', ''), 'BG_BLUE': u('logotype', 'bg-logo', ''),
         'BG_NAVY': u('logotype', 'bg-logo', ''), 'BG_MIST': u('logotype', 'bg-logo', ''),
@@ -26,7 +26,8 @@ def page():
         'D_COLOR': u('logotype', 'd-logo d-orange', ''), 'D_DOT': u('plain', 'd-logo', ''),
         'D_ROT': u('logotype', 'd-logo d-rot', ''), 'D_FX': u('logotype', 'd-logo d-fx', ''),
         'D_MARK': u('mark', 'd-mark', ''),
-        'FM': u('fm', 'fm', 'filemaster.teamwith.si'),
+        'FM': u('fm-stack', 'fm', 'filemaster.teamwith.si 三行组合'),
+        'FM_H': u('fm', 'fm-h', 'filemaster.teamwith.si 横版'),
     }.items():
         body = body.replace('{{' + key + '}}', val)
     return ('<!doctype html>\n<html lang="zh-CN">\n<head>\n<meta charset="utf-8">\n<title>teamwith.si 标志包使用说明</title>\n'
@@ -105,10 +106,15 @@ ul.min b{color:#123E8C}
 .d-fx{filter:drop-shadow(1.2px 1.5px 0 #F2B233) drop-shadow(0 2px 3px rgba(0,0,0,.35))}
 .d-font{display:flex;align-items:center;gap:1mm;font-family:Georgia,"Times New Roman",serif;font-size:13pt;white-space:nowrap}
 .d-mark{width:5.5mm;height:auto}
-.fm-box{border:.3mm solid #DCE2EC;border-radius:3mm;padding:7mm 8mm;display:grid;gap:4mm;justify-items:center}
+.fm-box{border:.3mm solid #DCE2EC;border-radius:3mm;padding:4.5mm 8mm 3.5mm;display:grid;gap:2mm;justify-items:center}
+.fm-note{margin-bottom:1.5mm}
+.tight{gap:4.2mm}
+.tight .kv div{padding:1.5mm 0}
 .domain{font-family:"IBM Plex Mono",monospace;font-size:11pt;color:#56637F}
 .domain b{color:#C23B35;font-size:1.3em}
-.fm{width:150mm;height:auto;color:#123E8C}
+.fm{width:82mm;height:auto;color:#123E8C}
+.fm-h{width:104mm;height:auto;color:#123E8C}
+.fm-note{font-size:7.8pt;color:#56637F}
 ol{margin:0;padding-left:5mm;display:grid;gap:1.2mm;font-size:8.9pt}
 .kv{display:grid;grid-template-columns:34mm 1fr;border-top:.3mm solid #DCE2EC}
 .kv div{padding:2mm 0;border-bottom:.3mm solid #DCE2EC;font-size:8.8pt}
@@ -132,7 +138,7 @@ BODY = """{{SPRITE}}
    <div class="row"><div class="th pair">{{T_SQ2}}{{T_SQ}}</div><code>04_Square</code><div><b>方形标志 1:1 · 握手 / Si</b><small>社交头像、公众号、群头像。蓝底、白底、透明三种，PNG 1024 / 512 px。</small></div></div>
    <div class="row"><div class="th">{{T_APP}}</div><code>05_App-Icon</code><div><b>App 图标</b><small>应用商店与手机桌面。1024 / 512 / 180 px。</small></div></div>
    <div class="row"><div class="th">{{T_FAV}}</div><code>06_Favicon</code><div><b>网站图标</b><small>浏览器标签页。16 / 32 px 用加粗版，favicon.ico 放在网站根目录。</small></div></div>
-   <div class="row"><div class="th">{{T_FM}}</div><code>07_FileMaster</code><div><b>子品牌 filemaster.teamwith.si</b><small>产品组合、简标、文件图标。</small></div></div>
+   <div class="row"><div class="th">{{T_FM}}</div><code>07_FileMaster</code><div><b>子品牌 filemaster.teamwith.si</b><small>三行组合（标准）、横版、横版简标、文件图标。</small></div></div>
    <div class="row"><div class="th"><code>PDF · HTML</code></div><code>00_Brand-Book</code><div><b>品牌手册</b><small>标准制图、安全空间、标准色、字体、应用示范、禁用示例的完整版本。</small></div></div>
    <div class="row"><div class="th"><code>TXT</code></div><code>licenses</code><div><b>授权文件</b><small>握手图形的开源许可证（Apache-2.0），随包保留即可。</small></div></div>
   </div>
@@ -215,15 +221,15 @@ BODY = """{{SPRITE}}
  <div class="foot"><span>teamwith.si</span><span>3 / 4</span></div>
 </div>
 
-<div class="sheet">
+<div class="sheet tight">
  <div class="head">{{HEAD_LOGO}}<span>标志包使用说明 · v1.0 · 2026-09</span></div>
  <section>
   <h2><i>08</i>子品牌扩展</h2>
-  <div class="fm-box"><p class="domain">filemaster<b>.</b>teamwith<b>.</b>si</p>{{FM}}</div>
+  <div class="fm-box"><p class="domain">filemaster<b>.</b>teamwith<b>.</b>si</p>{{FM}}<p class="fm-note">三行组合（标准）</p>{{FM_H}}<p class="fm-note">横版（网站页头、横幅等宽幅场景）</p></div>
   <ol style="margin-top:3mm">
-   <li>子域名里的每一个「.」都换成该产品的图标：主品牌的点是握手，filemaster 的点是文件。</li>
-   <li>产品名用同一套单线字，全部小写，放在最前面；产品图标用同一支笔画（圆头、同样粗细），高度是握手的 0.9 倍。</li>
-   <li>主标志连同下方全称整块不动，前缀只在左侧拼接。新增产品时请联系设计方按此规则出图，不要自行拼接。</li>
+   <li>产品名只是前缀：标准用三行组合，第一行产品名小写、不加图案，字高与全称相同；下面是主标志与全称，整块不动。</li>
+   <li>宽幅场景用横版：子域名里的点换成产品图标，图标用同一支笔画，高度是握手的 0.9 倍。</li>
+   <li>新增产品时请联系设计方按此规则出图，不要自行拼接。</li>
   </ol>
  </section>
  <section>

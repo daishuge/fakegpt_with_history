@@ -11,7 +11,7 @@ from shapely.ops import nearest_points
 
 import export
 from lettering import A, D, W, X, set_text
-from lockups import (FULL_NAME, MARK_GAP, app_icon, clear_space_box, filemaster_lockup, master_lockup,
+from lockups import (FULL_NAME, MARK_GAP, app_icon, clear_space_box, filemaster_lockup, filemaster_stack, master_lockup,
                      master_logotype, master_pieces, square_handshake, square_si)
 from marks import document, handshake
 
@@ -118,6 +118,7 @@ def build_sprite():
     sp.add('mark', handshake())
     sp.add('plain', set_text('teamwith.si'))
     sp.add('fm', filemaster_lockup())
+    sp.add('fm-stack', filemaster_stack())
     sp.add('fm-logotype', filemaster_lockup(with_full_name=False))
     sp.add('doc', document())
     side, radius, m = app_icon()
@@ -157,7 +158,9 @@ def page(fragment=False):
         'MIN_LOCKUP': u('lockup', 'min-lockup', '主标志最小尺寸'),
         'MIN_LOGOTYPE': u('logotype', 'min-logotype', '简标最小尺寸'),
         'MIN_FAV': u('fav', 'min-fav', 'favicon'),
-        'FM': u('fm', 'spec-logo', 'filemaster.teamwith.si'),
+        'FM': u('fm', 'spec-logo', 'filemaster.teamwith.si 横版'),
+        'FM_STACK': u('fm-stack', 'spec-logo', 'filemaster.teamwith.si 三行组合'),
+        'FM_STACK_BIG': u('fm-stack', 'stack-logo', 'filemaster.teamwith.si 三行组合'),
         'FM_LOGOTYPE': u('fm-logotype', 'spec-logo', 'filemaster 简标'),
         'APP_FM': u('app-fm', 'spec-app', 'FileMaster App 图标'),
         'APP_SM': u('app', 'dock-icon', 'teamwith.si'),
@@ -244,6 +247,7 @@ section{padding-block:clamp(48px,7vw,84px);border-top:1px solid var(--line)}
 .spec-logo{width:min(560px,100%);height:auto}
 .spec-app{width:132px;height:132px;border-radius:30px;box-shadow:0 10px 30px -12px rgba(11,37,84,.45)}
 .spec-mark{width:120px;height:auto}
+.stack-logo{width:min(640px,100%);height:auto}
 .sq-row{display:flex;flex-wrap:wrap;gap:18px;justify-content:center}
 .sq{width:120px;height:120px;border-radius:16px;box-shadow:0 10px 26px -14px rgba(11,37,84,.55)}
 .sq-w{box-shadow:0 0 0 1px #DCE2EC,0 10px 26px -14px rgba(11,37,84,.35)}
@@ -466,19 +470,22 @@ BODY = """{{SPRITE}}
 </section>
 
 <section id="family">
- <div class="sec-head"><span class="num">07</span><h2>子品牌</h2><p class="lead">规则只有一条：子域名里的每一个点，都换成它自己的图标。</p></div>
+ <div class="sec-head"><span class="num">07</span><h2>子品牌</h2><p class="lead">产品名只是前缀，主标志始终是主角。标准用三行组合；宽幅场景用横版，把子域名里的点换成产品图标。</p></div>
  <div class="grid">
-  <figure class="spec sp-white" style="gap:26px"><p class="domain">filemaster<b>.</b>teamwith<b>.</b>si</p>{{FM}}</figure>
+  <div class="item"><figure class="spec sp-white" style="gap:30px"><p class="domain">filemaster<b>.</b>teamwith<b>.</b>si</p>{{FM_STACK_BIG}}</figure>
+   <p class="cap"><b>三行组合（标准）</b>　第一行产品名是前缀：小写、不加图案，字高与全称相同，退到从属位置；下面两行是主标志与全称，整块不动。</p></div>
   <div class="grid g2">
-   <div class="item"><figure class="spec sp-white">{{FM_LOGOTYPE}}</figure><p class="cap"><b>filemaster 简标</b>　小尺寸时去掉全称行。</p></div>
+   <div class="item"><figure class="spec sp-blue">{{FM_STACK}}</figure><p class="cap"><b>三行组合 · 反白</b>　皇家蓝或深夜蓝底色上。</p></div>
    <div class="item"><figure class="spec sp-white">{{APP_FM}}</figure><p class="cap"><b>FileMaster App 图标</b>　和主品牌同一个圆角方块、同一支笔，只换图形。</p></div>
+   <div class="item"><figure class="spec sp-white">{{FM}}</figure><p class="cap"><b>横版（宽幅场景）</b>　网站页头、横幅。子域名里的点换成产品图标。</p></div>
+   <div class="item"><figure class="spec sp-white">{{FM_LOGOTYPE}}</figure><p class="cap"><b>横版简标</b>　小尺寸时去掉全称行。</p></div>
   </div>
  </div>
  <ul class="rules">
-  <li><span>产品名用同一套单线字，全部小写，放在最前面。</span></li>
-  <li><span>产品图标用同一支笔画（20 单位、圆头），站在降部线上，高度是握手的 0.9 倍，视觉分量才对等。</span></li>
-  <li><span>图标两侧留 22 单位的光学间距，和握手一致。</span></li>
-  <li><span>主标志连同下方全称整块不动，前缀只在左侧拼接。以后新增任何 xxx.teamwith.si 都照此办理。</span></li>
+  <li><span>三行组合的前缀：产品名缩放到主标的 0.52 倍，x 高与全称字高相同（54），字距略放松，墨迹左边与主标对齐，基线在主标 x 高线上方 106 单位。</span></li>
+  <li><span>产品名用同一套单线字，全部小写；三行组合里不加任何图案。</span></li>
+  <li><span>横版的产品图标用同一支笔画（20 单位、圆头），站在降部线上，高度是握手的 0.9 倍，两侧留 22 单位光学间距。</span></li>
+  <li><span>两种组合里主标志连同全称都整块不动。以后新增任何 xxx.teamwith.si 都照此办理。</span></li>
  </ul>
 </section>
 
@@ -521,7 +528,7 @@ BODY = """{{SPRITE}}
   <div class="file"><code>brand/logo/favicon.ico · favicon.svg</code><span>网站图标（加粗版）</span></div>
   <div class="file"><code>brand/logo/square/</code><span>方形标志 1:1：握手、Si，蓝底 / 白底 / 透明，PNG 1024 / 512 px</span></div>
   <div class="file"><code>brand/logo/png/</code><span>各版本 PNG，透明底</span></div>
-  <div class="file"><code>brand/products/filemaster/</code><span>filemaster.teamwith.si 组合、简标、文件图标</span></div>
+  <div class="file"><code>brand/products/filemaster/</code><span>filemaster.teamwith.si 三行组合、横版、横版简标、文件图标</span></div>
   <div class="file"><code>brand/source/</code><span>生成脚本：单线字、握手、组合规则</span></div>
  </div>
  <div class="cmd">cd brand/source

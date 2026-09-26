@@ -77,6 +77,22 @@ def filemaster_lockup(with_full_name=True):
     return product_lockup('file master', document(), with_full_name)
 
 
+PREFIX = dict(scale=0.52, lift=106.0)   # prefix x-height == full-name cap height; baseline 106 above the x-height line
+
+
+def product_stack(label):
+    """Three lines: the product name as a small prefix over the untouched master lockup (no pictogram)."""
+    master = master_lockup()
+    pre = set_text(label, gap=0.24 * X, space=0.40 * X)          # a touch looser: it is set small
+    pre = affinity.scale(pre, PREFIX['scale'], PREFIX['scale'], origin=(0, 0))
+    pre = affinity.translate(pre, master.bounds[0] - pre.bounds[0], -(X + PREFIX['lift']))
+    return unary_union([pre, master])
+
+
+def filemaster_stack():
+    return product_stack('file master')
+
+
 def app_icon(mark_ratio=0.60, radius_ratio=0.225, thicken=0.0, mark=None):
     """Returns (side, corner_radius, mark geometry positioned inside a side x side tile)."""
     m = handshake() if mark is None else mark

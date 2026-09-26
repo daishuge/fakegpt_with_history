@@ -80,6 +80,7 @@ def main():
     put(LOGO / 'favicon.svg', '06_Favicon/favicon.svg')
     put_pngs('favicon_*.png', LOGO / 'png', '06_Favicon')
 
+    put_vector('filemaster.teamwith-si_stacked', FM, '07_FileMaster')
     put_vector('filemaster.teamwith-si', FM, '07_FileMaster')
     put_vector('filemaster.teamwith-si_logotype', FM, '07_FileMaster')
     put_vector('filemaster_icon', FM, '07_FileMaster')

@@ -2,7 +2,8 @@
 from pathlib import Path
 
 import export
-from lockups import app_icon, filemaster_lockup, master_logotype, master_lockup, square_handshake, square_si
+from lockups import (app_icon, filemaster_lockup, filemaster_stack, master_logotype, master_lockup, square_handshake,
+                     square_si)
 from marks import document, handshake
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -49,6 +50,7 @@ def main():
                      export.svg([(geom, ROYAL_BLUE)], bounds=(0, 0, 1000.0, 1000.0)))
 
     fm = PRODUCTS / 'filemaster'
+    colourways('filemaster.teamwith-si_stacked', filemaster_stack(), fm, (1200, 2400))
     colourways('filemaster.teamwith-si', filemaster_lockup(), fm, (1200, 2400))
     colourways('filemaster.teamwith-si_logotype', filemaster_lockup(with_full_name=False), fm, (1200,))
     colourways('filemaster_icon', document(), fm, (256,))

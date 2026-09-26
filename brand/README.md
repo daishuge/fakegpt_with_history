@@ -19,7 +19,7 @@ teamwith.si 读作 team with Super Intelligence，和超级智能组队。
 - `logo/favicon.ico`、`logo/favicon.svg`：网站图标（加粗版，适合 16 / 32 px）
 - `logo/png/`：各版本透明底 PNG
 - `logo/square/`：1:1 方形标志（握手、Si），蓝底 / 白底 / 透明
-- `products/filemaster/`：filemaster.teamwith.si 组合、简标、文件图标
+- `products/filemaster/`：filemaster.teamwith.si 三行组合（`_stacked`，标准）、横版、横版简标、文件图标
 - `guidelines/index.html`、`guidelines/brand-book.pdf`：品牌手册（网页版 / A4 PDF）
 - `guidelines/usage-guide.pdf`：标志包使用说明（4 页 A4）
 - `source/`：生成以上全部文件的脚本
@@ -33,19 +33,29 @@ teamwith.si 读作 team with Super Intelligence，和超级智能组队。
 
 ## 子品牌
 
-子域名里的每一个「.」都换成该产品的图标。以 filemaster.teamwith.si 为例：
+产品名只是前缀，主标志始终是主角。以 filemaster.teamwith.si 为例：
+
+标准：三行组合（`products/filemaster/filemaster.teamwith-si_stacked.svg`）
+
+```
+file master
+team with [握手] si
+SUPER INTELLIGENCE
+```
+
+- 第一行产品名是前缀：同一套单线字、全部小写、不加图案，缩放到主标的 0.52 倍（x 高与全称字高相同），字距略放松，左对齐，基线在主标 x 高线上方 106 单位。
+- 下面两行是主标志与全称，整块不动。
+
+宽幅场景：横版（`filemaster.teamwith-si.svg`），子域名里的点换成产品图标：
 
 ```
 file master  [文件图标]  team with  [握手]  si
                                 SUPER INTELLIGENCE
 ```
 
-- 产品名用同一套单线字，全部小写，放在最前面。
-- 产品图标用同一支笔（20 单位、圆头），站在降部线上，高度为握手的 0.9 倍。
-- 图标两侧留 22 单位光学间距。
-- 主标志连同全称整块不动，前缀只在左侧拼接。
+- 产品图标用同一支笔（20 单位、圆头），站在降部线上，高度为握手的 0.9 倍，两侧留 22 单位光学间距。
 
-新增产品时在 `source/lockups.py` 里调用 `product_lockup('产品名', 图标几何)`，再加进 `source/build.py` 即可。
+新增产品时在 `source/lockups.py` 里调用 `product_stack('产品名')`（三行）或 `product_lockup('产品名', 图标几何)`（横版），再加进 `source/build.py` 即可。
 
 ## 重新生成
 

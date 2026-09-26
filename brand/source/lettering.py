@@ -140,6 +140,16 @@ def cap_glyph(ch, cap, pen):
         s = [[(h, yt), (h + wt, yt)], [(h + wt / 2, yt), (h + wt / 2, yb)]]
     elif ch == 'L':
         s = [[(h, yt), (h, yb), (h + 0.44 * cap, yb)]]
+    elif ch == 'F':
+        wf = 0.50 * cap
+        s = [[(h + wf, yt), (h, yt), (h, yb)], [(h, ym), (h + wf * 0.86, ym)]]
+    elif ch == 'M':
+        wm = 0.78 * cap
+        s = [[(h, yb), (h, yt), (h + wm / 2, yb), (h + wm, yt), (h + wm, yb)]]
+    elif ch == 'A':
+        wa, t = 0.74 * cap, 0.34
+        yc = yb - t * (yb - yt)
+        s = [[(h, yb), (h + wa / 2, yt), (h + wa, yb)], [(h + t * wa / 2, yc), (h + wa - t * wa / 2, yc)]]
     elif ch == 'C':
         s = [arc(h + r, ym, r, 42, 318, 80)]
     elif ch == 'G':
